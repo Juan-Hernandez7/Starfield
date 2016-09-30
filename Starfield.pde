@@ -1,19 +1,58 @@
-//your code here
+NormalParticle [] melvin;
 void setup()
 {
-	//your code here
+	size(2000,2000);
+   melvin = new NormalParticle[3000];
+for(int i =0; i<melvin.length; i++)
+	{
+       melvin[i] = new NormalParticle();
+	}
+
+
 }
+
 void draw()
-{
-	//your code here
+{ 
+	background(0);
+	for(int i=0; i<melvin.length; i++)
+	{
+       
+       melvin[i].move();
+       melvin[i].show();
+     
+	}
+  
 }
+
+
 class NormalParticle
-{
-	//your code here
+{    
+	int myColor;
+	double x,y,dSpeed,dAngle;
+	NormalParticle()
+	 {
+
+	  x = 750;
+	  y =  500; 
+	 dSpeed = Math.random()*10;
+	 dAngle = Math.PI*2*Math.random();
+	}
+	public void move()
+	{
+	x =  x +(Math.cos(dAngle)*dSpeed);
+	y = y + (Math.sin(dAngle)*dSpeed);
+     } 
+    
+	public void show()
+	{   
+		ellipse((float)x, (float)y,5,5);
+	}
+	
 }
 interface Particle
 {
-	//your code here
+	public void move();
+	public void show();
 }
 class OddballParticle //uses an interface
 {
